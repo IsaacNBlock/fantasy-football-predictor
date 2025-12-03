@@ -1,19 +1,8 @@
 {
-  "version": 2,
-  "builds": [
+  "rewrites": [
     {
-      "src": "prediction_interface.html",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/",
-      "dest": "/prediction_interface.html"
-    },
-    {
-      "src": "/prediction_interface.html",
-      "dest": "/prediction_interface.html"
+      "source": "/",
+      "destination": "/prediction_interface.html"
     }
   ],
   "headers": [
@@ -36,4 +25,3 @@
     }
   ]
 }
-
