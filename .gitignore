@@ -1,0 +1,45 @@
+# R files and data (optional - you may want to include these)
+# *.R
+# *.csv
+# *.RData
+# *.rds
+
+# Environment files
+*.env
+secrets.env
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Node modules (if you add any)
+node_modules/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Temporary files
+*.tmp
+*.log
+
+# Keep the prediction interface files - these should be committed
+!prediction_interface.*
+!model_coefficients.json
+
+# Keep documentation
+!*.md
+

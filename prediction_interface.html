@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fantasy Football Points Prediction Interface</title>
+    <link rel="stylesheet" href="prediction_interface.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏈 Fantasy Football Points Predictor</h1>
+            <p class="subtitle">Enter player statistics to predict fantasy points for each position</p>
+        </header>
+
+        <!-- Position Tabs -->
+        <div class="tabs">
+            <button class="tab-button active" onclick="switchTab('RB')">Running Back (RB)</button>
+            <button class="tab-button" onclick="switchTab('FB')">Fullback (FB)</button>
+            <button class="tab-button" onclick="switchTab('WR')">Wide Receiver (WR)</button>
+            <button class="tab-button" onclick="switchTab('TE')">Tight End (TE)</button>
+            <button class="tab-button" onclick="switchTab('QB')">Quarterback (QB)</button>
+        </div>
+
+        <!-- RB Form -->
+        <div id="RB" class="tab-content active">
+            <h2>Running Back (RB) Prediction</h2>
+            <form id="rb-form" class="prediction-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="rb_total_yards">Total Yards</label>
+                        <input type="number" id="rb_total_yards" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="rb_total_tds">Total Touchdowns</label>
+                        <input type="number" id="rb_total_tds" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="rb_receptions">Receptions</label>
+                        <input type="number" id="rb_receptions" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="rb_receiving_touchdown">Receiving Touchdown</label>
+                        <input type="number" id="rb_receiving_touchdown" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="rb_fumble_lost">Fumbles Lost</label>
+                        <input type="number" id="rb_fumble_lost" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="rb_interception">Interceptions</label>
+                        <input type="number" id="rb_interception" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="rb_passing_yards">Passing Yards</label>
+                        <input type="number" id="rb_passing_yards" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="rb_season_average_fumble_lost">Season Avg Fumbles Lost</label>
+                        <input type="number" id="rb_season_average_fumble_lost" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="rb_season_average_third_down_failed">Season Avg 3rd Down Failed</label>
+                        <input type="number" id="rb_season_average_third_down_failed" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="rb_season_ypr">Season Yards Per Reception</label>
+                        <input type="number" id="rb_season_ypr" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="rb_draft_pick">Draft Pick</label>
+                        <input type="number" id="rb_draft_pick" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="rb_delta_team_offense_snaps">Delta Team Offense Snaps</label>
+                        <input type="number" id="rb_delta_team_offense_snaps" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="rb_season_average_interception">Season Avg Interceptions</label>
+                        <input type="number" id="rb_season_average_interception" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="rb_qb_scramble">QB Scramble</label>
+                        <input type="number" id="rb_qb_scramble" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="rb_season_average_receptions_redzone">Season Avg Receptions Redzone</label>
+                        <input type="number" id="rb_season_average_receptions_redzone" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="rb_career_rec_td_pct">Career Rec TD %</label>
+                        <input type="number" id="rb_career_rec_td_pct" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="rb_fumble_forced">Fumbles Forced</label>
+                        <input type="number" id="rb_fumble_forced" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="rb_delta_ypc">Delta Yards Per Carry</label>
+                        <input type="number" id="rb_delta_ypc" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="rb_season_pass_touchdown_pct">Season Pass TD %</label>
+                        <input type="number" id="rb_season_pass_touchdown_pct" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="rb_career_average_complete_pass_redzone">Career Avg Complete Pass Redzone</label>
+                        <input type="number" id="rb_career_average_complete_pass_redzone" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="rb_delta_pass_td_pct">Delta Pass TD %</label>
+                        <input type="number" id="rb_delta_pass_td_pct" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="rb_pass_td_pct">Pass TD %</label>
+                        <input type="number" id="rb_pass_td_pct" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="rb_pass_attempts_gtg">Pass Attempts GTG</label>
+                        <input type="number" id="rb_pass_attempts_gtg" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="rb_career_total_tds">Career Total TDs</label>
+                        <input type="number" id="rb_career_total_tds" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="rb_depth_team">Depth Team</label>
+                        <input type="number" id="rb_depth_team" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="rb_season_average_rush_attempts">Season Avg Rush Attempts</label>
+                        <input type="number" id="rb_season_average_rush_attempts" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="rb_season_average_yards_after_catch">Season Avg Yards After Catch</label>
+                        <input type="number" id="rb_season_average_yards_after_catch" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="rb_rush_touchdown">Rush Touchdown</label>
+                        <input type="number" id="rb_rush_touchdown" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="rb_rush_touchdown_gtg">Rush Touchdown GTG</label>
+                        <input type="number" id="rb_rush_touchdown_gtg" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="rb_season_targets_redzone">Season Targets Redzone</label>
+                        <input type="number" id="rb_season_targets_redzone" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="rb_season_yards_after_catch">Season Yards After Catch</label>
+                        <input type="number" id="rb_season_yards_after_catch" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="rb_team_targets_share">Team Targets Share</label>
+                        <input type="number" id="rb_team_targets_share" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="rb_season_targets">Season Targets</label>
+                        <input type="number" id="rb_season_targets" step="0.01" value="0">
+                    </div>
+                </div>
+                <button type="button" onclick="calculatePrediction('RB')" class="predict-button">Calculate Prediction</button>
+                <div id="rb-result" class="result"></div>
+            </form>
+        </div>
+
+        <!-- FB Form -->
+        <div id="FB" class="tab-content">
+            <h2>Fullback (FB) Prediction</h2>
+            <form id="fb-form" class="prediction-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="fb_total_yards">Total Yards</label>
+                        <input type="number" id="fb_total_yards" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="fb_total_tds">Total Touchdowns</label>
+                        <input type="number" id="fb_total_tds" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="fb_receptions">Receptions</label>
+                        <input type="number" id="fb_receptions" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="fb_pass_touchdown">Pass Touchdown</label>
+                        <input type="number" id="fb_pass_touchdown" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="fb_fumble_lost">Fumbles Lost</label>
+                        <input type="number" id="fb_fumble_lost" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="fb_interception">Interceptions</label>
+                        <input type="number" id="fb_interception" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="fb_season_average_offense_snaps">Season Avg Offense Snaps</label>
+                        <input type="number" id="fb_season_average_offense_snaps" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="fb_receptions_gtg">Receptions GTG</label>
+                        <input type="number" id="fb_receptions_gtg" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="fb_season_rush_touchdown_gtg">Season Rush TD GTG</label>
+                        <input type="number" id="fb_season_rush_touchdown_gtg" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="fb_season_rush_td_pct">Season Rush TD %</label>
+                        <input type="number" id="fb_season_rush_td_pct" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="fb_delta_rush_attempts_gtg">Delta Rush Attempts GTG</label>
+                        <input type="number" id="fb_delta_rush_attempts_gtg" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="fb_career_fourth_down_converted">Career 4th Down Converted</label>
+                        <input type="number" id="fb_career_fourth_down_converted" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="fb_career_ypg">Career Yards Per Game</label>
+                        <input type="number" id="fb_career_ypg" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="fb_offense_snaps">Offense Snaps</label>
+                        <input type="number" id="fb_offense_snaps" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="fb_team_rush_touchdown_share">Team Rush TD Share</label>
+                        <input type="number" id="fb_team_rush_touchdown_share" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="fb_shotgun">Shotgun</label>
+                        <input type="number" id="fb_shotgun" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="fb_season_average_third_down_failed">Season Avg 3rd Down Failed</label>
+                        <input type="number" id="fb_season_average_third_down_failed" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="fb_receiving_touchdown_redzone">Receiving TD Redzone</label>
+                        <input type="number" id="fb_receiving_touchdown_redzone" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="fb_season_average_receiving_touchdown_redzone">Season Avg Receiving TD Redzone</label>
+                        <input type="number" id="fb_season_average_receiving_touchdown_redzone" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="fb_career_ypr">Career Yards Per Reception</label>
+                        <input type="number" id="fb_career_ypr" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="fb_season_average_no_huddle">Season Avg No Huddle</label>
+                        <input type="number" id="fb_season_average_no_huddle" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="fb_season_td_pct">Season TD %</label>
+                        <input type="number" id="fb_season_td_pct" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="fb_season_rush_touchdown">Season Rush Touchdown</label>
+                        <input type="number" id="fb_season_rush_touchdown" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="fb_season_rush_attempts_gtg">Season Rush Attempts GTG</label>
+                        <input type="number" id="fb_season_rush_attempts_gtg" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="fb_season_receiving_touchdown_gtg">Season Receiving TD GTG</label>
+                        <input type="number" id="fb_season_receiving_touchdown_gtg" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="fb_career_average_receiving_touchdown_gtg">Career Avg Receiving TD GTG</label>
+                        <input type="number" id="fb_career_average_receiving_touchdown_gtg" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="fb_first_down_pass">First Down Pass</label>
+                        <input type="number" id="fb_first_down_pass" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="fb_season_average_fumble_out_of_bounds">Season Avg Fumble Out of Bounds</label>
+                        <input type="number" id="fb_season_average_fumble_out_of_bounds" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="fb_delta_rush_td_pct">Delta Rush TD %</label>
+                        <input type="number" id="fb_delta_rush_td_pct" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="fb_receptions_redzone">Receptions Redzone</label>
+                        <input type="number" id="fb_receptions_redzone" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="fb_ayptarget">Air Yards Per Target</label>
+                        <input type="number" id="fb_ayptarget" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="fb_rush_td_pct">Rush TD %</label>
+                        <input type="number" id="fb_rush_td_pct" step="0.01" value="0">
+                    </div>
+                </div>
+                <button type="button" onclick="calculatePrediction('FB')" class="predict-button">Calculate Prediction</button>
+                <div id="fb-result" class="result"></div>
+            </form>
+        </div>
+
+        <!-- WR Form -->
+        <div id="WR" class="tab-content">
+            <h2>Wide Receiver (WR) Prediction</h2>
+            <form id="wr-form" class="prediction-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="wr_total_yards">Total Yards</label>
+                        <input type="number" id="wr_total_yards" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="wr_total_tds">Total Touchdowns</label>
+                        <input type="number" id="wr_total_tds" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="wr_receptions">Receptions</label>
+                        <input type="number" id="wr_receptions" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="wr_interception">Interceptions</label>
+                        <input type="number" id="wr_interception" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="wr_fumble_lost">Fumbles Lost</label>
+                        <input type="number" id="wr_fumble_lost" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="wr_receiving_touchdown">Receiving Touchdown</label>
+                        <input type="number" id="wr_receiving_touchdown" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="wr_ypa">Yards Per Attempt</label>
+                        <input type="number" id="wr_ypa" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="wr_career_average_rush_touchdown_redzone">Career Avg Rush TD Redzone</label>
+                        <input type="number" id="wr_career_average_rush_touchdown_redzone" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="wr_career_average_incomplete_pass">Career Avg Incomplete Pass</label>
+                        <input type="number" id="wr_career_average_incomplete_pass" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="wr_team_receiving_yards_share">Team Receiving Yards Share</label>
+                        <input type="number" id="wr_team_receiving_yards_share" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="wr_team_targets_share">Team Targets Share</label>
+                        <input type="number" id="wr_team_targets_share" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="wr_delta_pass_attempts">Delta Pass Attempts</label>
+                        <input type="number" id="wr_delta_pass_attempts" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="wr_season_average_fumble_not_forced">Season Avg Fumble Not Forced</label>
+                        <input type="number" id="wr_season_average_fumble_not_forced" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="wr_career_rec_ypg">Career Rec Yards Per Game</label>
+                        <input type="number" id="wr_career_rec_ypg" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="wr_age">Age</label>
+                        <input type="number" id="wr_age" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="wr_delta_total_tds">Delta Total TDs</label>
+                        <input type="number" id="wr_delta_total_tds" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="wr_season_average_pass_touchdown_gtg">Season Avg Pass TD GTG</label>
+                        <input type="number" id="wr_season_average_pass_touchdown_gtg" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="wr_career_average_rush_touchdown">Career Avg Rush Touchdown</label>
+                        <input type="number" id="wr_career_average_rush_touchdown" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="wr_delta_rush_attempts_gtg">Delta Rush Attempts GTG</label>
+                        <input type="number" id="wr_delta_rush_attempts_gtg" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="wr_season_average_rush_attempts_redzone">Season Avg Rush Attempts Redzone</label>
+                        <input type="number" id="wr_season_average_rush_attempts_redzone" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="wr_years_exp">Years Experience</label>
+                        <input type="number" id="wr_years_exp" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="wr_season_rush_touchdown_redzone">Season Rush TD Redzone</label>
+                        <input type="number" id="wr_season_rush_touchdown_redzone" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="wr_season_rush_td_pct">Season Rush TD %</label>
+                        <input type="number" id="wr_season_rush_td_pct" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="wr_season_targets">Season Targets</label>
+                        <input type="number" id="wr_season_targets" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="wr_season_targets_redzone">Season Targets Redzone</label>
+                        <input type="number" id="wr_season_targets_redzone" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="wr_delta_passing_yards">Delta Passing Yards</label>
+                        <input type="number" id="wr_delta_passing_yards" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="wr_team_receptions_share">Team Receptions Share</label>
+                        <input type="number" id="wr_team_receptions_share" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="wr_season_average_safety">Season Avg Safety</label>
+                        <input type="number" id="wr_season_average_safety" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="wr_career_rec_td_pct">Career Rec TD %</label>
+                        <input type="number" id="wr_career_rec_td_pct" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="wr_season_receiving_touchdown">Season Receiving Touchdown</label>
+                        <input type="number" id="wr_season_receiving_touchdown" step="0.01" value="0">
+                    </div>
+                </div>
+                <button type="button" onclick="calculatePrediction('WR')" class="predict-button">Calculate Prediction</button>
+                <div id="wr-result" class="result"></div>
+            </form>
+        </div>
+
+        <!-- TE Form -->
+        <div id="TE" class="tab-content">
+            <h2>Tight End (TE) Prediction</h2>
+            <form id="te-form" class="prediction-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="te_total_yards">Total Yards</label>
+                        <input type="number" id="te_total_yards" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="te_total_tds">Total Touchdowns</label>
+                        <input type="number" id="te_total_tds" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="te_receptions">Receptions</label>
+                        <input type="number" id="te_receptions" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="te_interception">Interceptions</label>
+                        <input type="number" id="te_interception" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="te_fumble_lost">Fumbles Lost</label>
+                        <input type="number" id="te_fumble_lost" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="te_rush_touchdown">Rush Touchdown</label>
+                        <input type="number" id="te_rush_touchdown" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="te_season_average_first_down_pass">Season Avg First Down Pass</label>
+                        <input type="number" id="te_season_average_first_down_pass" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="te_int_pct">Interception %</label>
+                        <input type="number" id="te_int_pct" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="te_career_td_pct">Career TD %</label>
+                        <input type="number" id="te_career_td_pct" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="te_pass_touchdown_redzone">Pass TD Redzone</label>
+                        <input type="number" id="te_pass_touchdown_redzone" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="te_receptions_redzone">Receptions Redzone</label>
+                        <input type="number" id="te_receptions_redzone" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="te_delta_rush_touchdown_gtg">Delta Rush TD GTG</label>
+                        <input type="number" id="te_delta_rush_touchdown_gtg" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="te_season_average_rush_touchdown_gtg">Season Avg Rush TD GTG</label>
+                        <input type="number" id="te_season_average_rush_touchdown_gtg" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="te_delta_passer_rating">Delta Passer Rating</label>
+                        <input type="number" id="te_delta_passer_rating" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="te_team_receptions_share">Team Receptions Share</label>
+                        <input type="number" id="te_team_receptions_share" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="te_season_average_receptions_redzone">Season Avg Receptions Redzone</label>
+                        <input type="number" id="te_season_average_receptions_redzone" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="te_yptouch">Yards Per Touch</label>
+                        <input type="number" id="te_yptouch" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="te_season_yptarget">Season Yards Per Target</label>
+                        <input type="number" id="te_season_yptarget" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="te_team_receiving_yards_share">Team Receiving Yards Share</label>
+                        <input type="number" id="te_team_receiving_yards_share" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="te_season_rush_attempts_redzone">Season Rush Attempts Redzone</label>
+                        <input type="number" id="te_season_rush_attempts_redzone" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="te_career_comp_pct">Career Completion %</label>
+                        <input type="number" id="te_career_comp_pct" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="te_career_receiving_touchdown_gtg">Career Receiving TD GTG</label>
+                        <input type="number" id="te_career_receiving_touchdown_gtg" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="te_career_average_fumble_out_of_bounds">Career Avg Fumble Out of Bounds</label>
+                        <input type="number" id="te_career_average_fumble_out_of_bounds" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="te_career_average_fumble_lost">Career Avg Fumble Lost</label>
+                        <input type="number" id="te_career_average_fumble_lost" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="te_career_yards_after_catch">Career Yards After Catch</label>
+                        <input type="number" id="te_career_yards_after_catch" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="te_team_rush_attempts_share">Team Rush Attempts Share</label>
+                        <input type="number" id="te_team_rush_attempts_share" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="te_season_rushing_yards">Season Rushing Yards</label>
+                        <input type="number" id="te_season_rushing_yards" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="te_season_first_down_rush">Season First Down Rush</label>
+                        <input type="number" id="te_season_first_down_rush" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="te_passing_air_yards">Passing Air Yards</label>
+                        <input type="number" id="te_passing_air_yards" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="te_season_pass_attempts">Season Pass Attempts</label>
+                        <input type="number" id="te_season_pass_attempts" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="te_season_average_pass_attempts_gtg">Season Avg Pass Attempts GTG</label>
+                        <input type="number" id="te_season_average_pass_attempts_gtg" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="te_career_average_rush_attempts_redzone">Career Avg Rush Attempts Redzone</label>
+                        <input type="number" id="te_career_average_rush_attempts_redzone" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="te_season_average_interception">Season Avg Interception</label>
+                        <input type="number" id="te_season_average_interception" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="te_pass_attempts_gtg">Pass Attempts GTG</label>
+                        <input type="number" id="te_pass_attempts_gtg" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="te_pass_attempts_redzone">Pass Attempts Redzone</label>
+                        <input type="number" id="te_pass_attempts_redzone" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="te_season_pass_attempts_gtg">Season Pass Attempts GTG</label>
+                        <input type="number" id="te_season_pass_attempts_gtg" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="te_delta_pass_attempts">Delta Pass Attempts</label>
+                        <input type="number" id="te_delta_pass_attempts" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="te_targets_gtg">Targets GTG</label>
+                        <input type="number" id="te_targets_gtg" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="te_receiving_touchdown_redzone">Receiving TD Redzone</label>
+                        <input type="number" id="te_receiving_touchdown_redzone" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="te_targets">Targets</label>
+                        <input type="number" id="te_targets" step="0.01" value="0">
+                    </div>
+                </div>
+                <button type="button" onclick="calculatePrediction('TE')" class="predict-button">Calculate Prediction</button>
+                <div id="te-result" class="result"></div>
+            </form>
+        </div>
+
+        <!-- QB Form -->
+        <div id="QB" class="tab-content">
+            <h2>Quarterback (QB) Prediction</h2>
+            <form id="qb-form" class="prediction-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="qb_total_tds">Total Touchdowns</label>
+                        <input type="number" id="qb_total_tds" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="qb_total_yards">Total Yards</label>
+                        <input type="number" id="qb_total_yards" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="qb_interception">Interceptions</label>
+                        <input type="number" id="qb_interception" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="qb_fumble_lost">Fumbles Lost</label>
+                        <input type="number" id="qb_fumble_lost" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="qb_passing_yards">Passing Yards</label>
+                        <input type="number" id="qb_passing_yards" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="qb_rec_td_pct">Rec TD %</label>
+                        <input type="number" id="qb_rec_td_pct" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="qb_receptions">Receptions</label>
+                        <input type="number" id="qb_receptions" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="qb_receiving_touchdown">Receiving Touchdown</label>
+                        <input type="number" id="qb_receiving_touchdown" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="qb_season_fumble_out_of_bounds">Season Fumble Out of Bounds</label>
+                        <input type="number" id="qb_season_fumble_out_of_bounds" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="qb_season_comp_pct">Season Completion %</label>
+                        <input type="number" id="qb_season_comp_pct" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="qb_rush_attempts_gtg">Rush Attempts GTG</label>
+                        <input type="number" id="qb_rush_attempts_gtg" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="qb_rush_attempts">Rush Attempts</label>
+                        <input type="number" id="qb_rush_attempts" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="qb_career_qb_scramble">Career QB Scramble</label>
+                        <input type="number" id="qb_career_qb_scramble" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="qb_draft_ovr">Draft Overall</label>
+                        <input type="number" id="qb_draft_ovr" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="qb_delta_complete_pass">Delta Complete Pass</label>
+                        <input type="number" id="qb_delta_complete_pass" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="qb_fumble_not_forced">Fumble Not Forced</label>
+                        <input type="number" id="qb_fumble_not_forced" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="qb_season_average_rush_touchdown_redzone">Season Avg Rush TD Redzone</label>
+                        <input type="number" id="qb_season_average_rush_touchdown_redzone" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="qb_season_tackled_for_loss">Season Tackled for Loss</label>
+                        <input type="number" id="qb_season_tackled_for_loss" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="qb_career_rushing_yards">Career Rushing Yards</label>
+                        <input type="number" id="qb_career_rushing_yards" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="qb_int_pct">Interception %</label>
+                        <input type="number" id="qb_int_pct" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="qb_career_average_rush_attempts_gtg">Career Avg Rush Attempts GTG</label>
+                        <input type="number" id="qb_career_average_rush_attempts_gtg" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="qb_career_average_third_down_converted">Career Avg 3rd Down Converted</label>
+                        <input type="number" id="qb_career_average_third_down_converted" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="qb_career_average_fourth_down_converted">Career Avg 4th Down Converted</label>
+                        <input type="number" id="qb_career_average_fourth_down_converted" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="qb_third_down_failed">3rd Down Failed</label>
+                        <input type="number" id="qb_third_down_failed" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="qb_ayptarget">Air Yards Per Target</label>
+                        <input type="number" id="qb_ayptarget" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="qb_team_receiving_yards_share">Team Receiving Yards Share</label>
+                        <input type="number" id="qb_team_receiving_yards_share" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="qb_adot">Average Depth of Target</label>
+                        <input type="number" id="qb_adot" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="qb_career_average_receiving_touchdown_gtg">Career Avg Receiving TD GTG</label>
+                        <input type="number" id="qb_career_average_receiving_touchdown_gtg" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="qb_season_receiving_touchdown_gtg">Season Receiving TD GTG</label>
+                        <input type="number" id="qb_season_receiving_touchdown_gtg" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="qb_season_targets_gtg">Season Targets GTG</label>
+                        <input type="number" id="qb_season_targets_gtg" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="qb_career_average_receptions_redzone">Career Avg Receptions Redzone</label>
+                        <input type="number" id="qb_career_average_receptions_redzone" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="qb_career_fumble_not_forced">Career Fumble Not Forced</label>
+                        <input type="number" id="qb_career_fumble_not_forced" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="qb_career_rush_touchdown">Career Rush Touchdown</label>
+                        <input type="number" id="qb_career_rush_touchdown" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="qb_season_receptions_redzone">Season Receptions Redzone</label>
+                        <input type="number" id="qb_season_receptions_redzone" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="qb_season_rec_td_pct">Season Rec TD %</label>
+                        <input type="number" id="qb_season_rec_td_pct" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="qb_career_rush_ypg">Career Rush Yards Per Game</label>
+                        <input type="number" id="qb_career_rush_ypg" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="qb_yptarget">Yards Per Target</label>
+                        <input type="number" id="qb_yptarget" step="0.01" value="0">
+                    </div>
+                </div>
+                <button type="button" onclick="calculatePrediction('QB')" class="predict-button">Calculate Prediction</button>
+                <div id="qb-result" class="result"></div>
+            </form>
+        </div>
+    </div>
+
+    <script src="prediction_interface.js"></script>
+</body>
+</html>
+
